@@ -54,26 +54,13 @@ ENV DIR=/app \
 
 WORKDIR $DIR
 
-# Copy only required package files
-COPY package*.json ./
-
-# Install only production dependencies for runtime
-RUN npm ci --omit=dev
-
 # Copy production build from builder
-#COPY --from=builder /app/.next ./.next
-#COPY --from=builder /app/public ./public
-#COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
-
-# Next.js needs these for runtime
-#COPY --from=builder /app/.next/standalone ./
 
 # Expose the Next.js port
 EXPOSE 3000
 
 # Run Next.js production server
 CMD ["node", "server.js"]
-#CMD ["npm", "run", "start"]
