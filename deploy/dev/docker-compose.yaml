@@ -1,7 +1,7 @@
 services:
   ####################### APPLICATION #######################
-  node-pipeline-local-dev:
-    container_name: node-pipeline-local-dev
+  next-pipeline-local-dev:
+    container_name: next-pipeline-local-dev
     build:
       context: ../..
       dockerfile: deploy/dev/Dockerfile
