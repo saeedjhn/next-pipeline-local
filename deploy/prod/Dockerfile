@@ -73,4 +73,5 @@ COPY --from=builder /app/.next/standalone ./
 EXPOSE 3000
 
 # Run Next.js production server
-CMD ["npm", "run", "start"]
+CMD ["node", ".next/standalone/server.js"]
+#CMD ["npm", "run", "start"]
